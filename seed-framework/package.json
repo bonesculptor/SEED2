@@ -1,0 +1,32 @@
+{
+  "name": "@seed-framework/core",
+  "version": "1.0.0",
+  "description": "SEED Framework - Systemic, Ecological, Evolutionary, Domain-driven agent governance system",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "author": "",
+  "license": "MIT",
+  "keywords": [
+    "agent",
+    "governance",
+    "protocol",
+    "SEED",
+    "multi-agent",
+    "constraint-system",
+    "GICS",
+    "domain-driven"
+  ],
+  "peerDependencies": {
+    "@supabase/supabase-js": "^2.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "files": [
+    "database/",
+    "repositories/",
+    "services/",
+    "README.md",
+    "LICENSE"
+  ]
+}
