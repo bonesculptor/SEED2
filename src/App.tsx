@@ -6,13 +6,14 @@ import { Dashboard } from './pages/Dashboard';
 import { ArchitectureDocumentation } from './pages/ArchitectureDocumentation';
 import { MedicalRecords } from './pages/MedicalRecords';
 import { LoginForm } from './components/LoginForm';
+import { ProjectExport } from './components/ProjectExport';
 
 const services = new ServiceContainer(supabase);
 
 function App() {
   const [user, setUser] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState<'dashboard' | 'documentation' | 'medical-records'>('dashboard');
+  const [currentPage, setCurrentPage] = useState<'dashboard' | 'documentation' | 'medical-records' | 'project-export'>('dashboard');
 
   useEffect(() => {
     services.auth.getCurrentSession().then(session => {
@@ -92,6 +93,16 @@ function App() {
                     >
                       Documentation
                     </button>
+                    <button
+                      onClick={() => setCurrentPage('project-export')}
+                      className={`px-4 py-2 rounded-lg transition-colors ${
+                        currentPage === 'project-export'
+                          ? 'bg-blue-600 text-white'
+                          : 'text-slate-400 hover:text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      Export
+                    </button>
                   </div>
                 </div>
                 <button
@@ -108,6 +119,7 @@ function App() {
           {currentPage === 'dashboard' && <Dashboard />}
           {currentPage === 'medical-records' && <MedicalRecords />}
           {currentPage === 'documentation' && <ArchitectureDocumentation />}
+          {currentPage === 'project-export' && <ProjectExport />}
         </div>
       ) : (
         <LoginForm onSignIn={handleSignIn} onSignUp={handleSignUp} />
